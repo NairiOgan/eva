@@ -224,14 +224,18 @@ const colorBodyRadios = document.querySelectorAll('input[name="colorBody"]');
 const colorCantRadios = document.querySelectorAll('input[name="colorCant"]');
 
 // Получаем соответствующие <span> элементы
-const colorBodyOutput = document.getElementById('colorBodyOutput');
-const colorCantOutput = document.getElementById('colorCantOutput');
+// const colorBodyOutput = document.getElementById('colorBodyOutput');
+// const colorCantOutput = document.getElementById('colorCantOutput');
+const colorBodyOutput = document.querySelectorAll('.colorBodyOutput');
+const colorCantOutput = document.querySelectorAll('.colorCantOutput');
 
 // Функция для обновления текстового содержимого <span> с цветом коврика
 function updateBodyColorOutput() {
   colorBodyRadios.forEach(function (radio) {
     if (radio.checked) {
-      colorBodyOutput.innerText = radio.value;
+      colorBodyOutput.forEach(function (body) {
+        body.innerText = radio.value;
+      });
     }
   });
 }
@@ -240,7 +244,9 @@ function updateBodyColorOutput() {
 function updateCantColorOutput() {
   colorCantRadios.forEach(function (radio) {
     if (radio.checked) {
-      colorCantOutput.innerText = radio.value;
+      colorCantOutput.forEach(function (body) {
+        body.innerText = radio.value;
+      });
     }
   });
 }
@@ -265,23 +271,31 @@ if (document.querySelector('.colorBodyOutput')) {
 
 // Добавляем функциональность для смены классов цветов коврика и канта (ваш предыдущий код)
 const colorButtons = document.querySelectorAll('.color-btn');
-const carMatBody = document.querySelector('.constructor-wrap__result__body');
+const carMatBody = document.querySelectorAll('.constructor-wrap__result__body');
 const colorCantButtons = document.querySelectorAll('.color-cant-btn');
-const carMatCant = document.querySelector('.constructor-wrap__result__cant');
+const carMatCant = document.querySelectorAll('.constructor-wrap__result__cant');
 
 function setColorClass(event) {
   const selectedColor = event.target.dataset.color;
   const colorClasses = ['colorBlack', 'colorPeachy', 'colorDarkenGray', 'colorPurple', 'colorOrange', 'colorLightGreen', 'colorDarkGreen', 'colorBlue', 'colorLightBrownishGray', 'colorLightBeige', 'colorDarkBrown', 'colorWhite', 'colorYellow', 'colorDarkBlue'];
-  carMatBody.classList.remove(...colorClasses);
-  carMatBody.classList.add(selectedColor);
+  // carMatBody.classList.remove(...colorClasses);
+  // carMatBody.classList.add(selectedColor);
+  carMatBody.forEach((body) => {
+    body.classList.remove(...colorClasses);
+    body.classList.add(selectedColor);
+  })
   updateBodyColorOutput();
 }
 
 function setCantColorClass(event) {
   const selectedColor = event.target.dataset.color;
   const colorClasses = ['colorCantСhartreuse', 'colorCantFeldgrau', 'colorCantLightYellow', 'colorCantYellow', 'colorCantOrange', 'colorCantRed', 'colorCantMaroon', 'colorCantDarkBrown', 'colorCantPurple', 'colorCantDarkBlue', 'colorCantLightBlack', 'colorCantBlue', 'colorCantLilac', 'colorCantCelestial', 'colorCantBrown', 'colorCantYellowishGray', 'colorCantGraniteGray', 'colorCantPearlescentLightGray', 'colorCantTimberWolf', 'colorCantBlack'];
-  carMatCant.classList.remove(...colorClasses);
-  carMatCant.classList.add(selectedColor);
+  // carMatCant.classList.remove(...colorClasses);
+  // carMatCant.classList.add(selectedColor);
+  carMatCant.forEach((body) => {
+    body.classList.remove(...colorClasses);
+    body.classList.add(selectedColor);
+  })
   updateCantColorOutput();
 }
 
@@ -307,6 +321,9 @@ colorCantButtons.forEach(function (button) {
 // =====================================================================
 // Слайдер вариантов ковриков
 const carMatsCategoryesSwiper = new Swiper('.deafult-slider', {
+  loop: true,
+  loopAdditionalSlides: 2,
+  loopedSlides: 2,
   // Стрелочки
   navigation: {
     nextEl: '.swiper-button-next',
@@ -355,6 +372,7 @@ const carMatsCategoryesSwiper = new Swiper('.deafult-slider', {
     },
   },
 });
+
 
 // Слайдер аксессуаров
 const accessoriesSwiper = new Swiper('.accessoriesSlider', {
