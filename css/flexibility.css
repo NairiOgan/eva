@@ -1904,6 +1904,13 @@
         gap: 20px;
         margin-bottom: 0;
     }
+
+    .product-section-wrap__options__item .num-ellipse {
+        font-size: 12px;
+        padding: 16px 15px;
+        width: 40px;
+        height: 40px;
+    }
 }
 @media screen and (max-width: 524px) {
     /* containers */
