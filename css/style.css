@@ -852,6 +852,7 @@ section {
 
 .color-option._white {
   background: #FFFFFF;
+  border: 1px solid #ebebeb;
 }
 
 .color-option._white._border {
@@ -1056,6 +1057,19 @@ section {
 .constructor-wrap__result--wrap._product {
   margin-top: 60px;
 }
+
+.constructor-wrap__result--wrap._product._mobile {
+  display: none;
+}
+
+.constructor-wrap__result--wrap__wrap {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+
 
 .constructor-wrap__result {
   width: 520px;
